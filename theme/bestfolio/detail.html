@@ -1,0 +1,22 @@
+{% extends index.html %}
+{% block web_title %} {{data.get("title", "")}} {% end %}
+{% block bodytype %} <body> {% end %}
+
+{% block body %}
+	<!-- COLUMNS -->
+	<h1 id="title"> 
+	</h1>
+	<div id="section" class="box">
+		<!-- CONTENT -->
+		<div id="content" style="width:900px;">
+				<div id='div_data_content' class="div_data_content"> </div>
+				<textarea class="hidden form-control" id="data_content" name="data_content" type="textarea" rows="6" oninput="this.editor.update();"> {{data.get("content","")}} </textarea>
+				<script src="/static/markdownjs/markdown.js"></script>
+				<script>
+						document.getElementById('div_data_content').innerHTML = markdown.toHTML(document.getElementById('data_content').value);
+				</script>
+		</div> 
+		<!-- /content -->
+	</div>
+	<!-- /section -->
+{% end %}

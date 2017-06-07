@@ -1,0 +1,67 @@
+{% extends index.html %}
+{% block body %}
+	<!-- WELCOME -->
+	<div id="welcome" class="box">
+		<div id="welcome-inner">
+			<h2>{{ SETTINGS.SYSTEM_NAME }}</h2>
+			<p>公司始终坚持“诚信、专注、中庸、创新”的核心价值理念，在长期的发展中，秉承“以德为本”的宗旨，严格依循ISO9001质量管理体系，坚守“质量第一”的质量方针，确保了公司在信息系统解决方案、大数据应用软件研发及IT技术支持与维护解决方案的高水平、高品质、高性价比的市场竞争力。 展望未来，公司将不断追随全球计算机科技的发展步伐，掌握前沿技术、拓展服务网络、完善服务体系、丰富服务产品，将运用强大的客户关系管理能力、IT产品与方案的资源整合能力、项目实施的高品质和高效率管理能力、IT服务的高质量交付能力，满足客户不断增长的信息化应用需求，立志成为一家社会性、长久的、信息技术的、服务性的、高科技公司！.</p>
+		</div> 
+		<!-- /welcome-inner -->
+
+		<!-- TWITTER -->
+		<div id="twitter">
+			<ul>
+				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi nunc, aliquam quis sollicitudin in, malesuada eu lectus. 
+				Vivamus sodales semper ultricies. Ut dui anteestem dignissim ac ornare eget, sollicitudin a libero. &ndash; <a href="#">58 minutes ago</a></li>
+			</ul>
+		</div> 
+		<!-- /twitter -->
+		
+		<div id="imac">
+			<!-- REPLACE THESE 3 IMAGES WITH YOUR OWN IMAGES (WIDTH:371, HEIGHT:211) -->
+			<div id="slider" class="nivoSlider">
+				<img src="/static/{{SETTINGS.TEMPLATE_DEFAULT}}/images/slide-01.jpg" alt="" />
+				<img src="/static/{{SETTINGS.TEMPLATE_DEFAULT}}/images/slide-02.jpg" alt="" />
+				<img src="/static/{{SETTINGS.TEMPLATE_DEFAULT}}/images/slide-03.jpg" alt="" />
+			</div> <!-- /slider -->
+		</div> <!-- /imac -->
+		
+	</div>
+	<!-- /welcome -->
+	
+	<!-- COLUMNS -->
+	<div id="section" class="box">
+		<!-- CONTENT -->
+		<div id="content">
+			<h2 class="nom">公司产品 </h2>		
+			<ul class="products">
+				{% for i, d in enumerate(data) %}
+					<li class="box">
+						<div class="products-img"><img src='{{ d.get("small_img", "/static/"+SETTINGS.TEMPLATE_DEFAULT+"/images/product-01.jpg") }}' alt="" /></div>
+						<!-- Photo: (c) Emran Kassim -->
+						<div class="products-desc">
+							<h3><a target="_blank" href='/web/detail/news/{{d.get("_id", "")}}/'> {{ d.get("title", "")}} </a></h3>
+							<p>{{ d.get("summary", "")}} </p>
+						</div> <!-- /products-desc -->
+					</li>
+				{% end %}
+			</ul>
+		
+		</div> <!-- /content -->
+
+		<!-- SIDEBAR -->
+		<div id="aside">
+			<h2 class="nom">What is new?</h2>
+			<ul class="articles">
+				{% for i, d in enumerate(data) %}
+					<li>
+						<h3><a target="_blank"  href="/web/detail/news/{{d.get("_id", "")}}/">{{ d.get("title", "") }}</a></h3>
+						<p class="date">{{ d.get("addon", "") }}</p>
+						<p>{{ d.get("summary", "") }} </p>
+					</li>
+				{% end %}
+			</ul>
+		</div> <!-- /aside -->
+	</div> <!-- /section -->
+
+{% end %}
